@@ -9,6 +9,6 @@ job('Centric Shop DSL Job') {
 		scm('H/5 * * * *')
 	}
 	steps {
-		bat["cucumber -p shopping -t @login"]
+		batchFile("cucumber -p shopping -t @login")
 	}
 }
