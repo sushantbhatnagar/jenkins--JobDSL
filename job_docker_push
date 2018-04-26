@@ -1,0 +1,21 @@
+job('Centric Shop on Docker') {
+    scm{
+        git('git://github.com/sushantbhatnagar/ShoppingCenter.git') { node -> 
+            node /gitConfigName('Sushant Bhatnagar')
+            node /gitConfigEmail('sushantbhatnagar91@gmail.com')
+        }
+    }
+    triggers {
+        scm('H/5 * * * *')
+    }
+  steps {
+        dockerBuildAndPublish {
+            repositoryName('sushantbhatnagar/dockerpushviaDSL')
+            tag('${BUILD_TIMESTAMP}-${GIT_REVISION,length=7}')
+            registryCredentials('docker-hub')
+            forcePull(false)
+            createFingerprints(false)
+            skipDecorate()
+        }
+    }
+}
