@@ -10,10 +10,9 @@ job('Centric Shop on Docker') {
     }
   steps {
         dockerBuildAndPublish {
-            repositoryName('sushantbhatnagar/dockerpushviaDSL')
-            tag('${BUILD_TIMESTAMP}-${GIT_REVISION,length=7}')
+            repositoryName('sushantbhatnagar/dockerpushvia_dsl')
+            tag('${GIT_REVISION,length=7}')
             registryCredentials('docker-hub')
-            forcePull(false)
             createFingerprints(false)
             skipDecorate()
         }
