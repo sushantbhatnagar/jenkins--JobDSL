@@ -1,8 +1,4 @@
 node {
-   def commit_id
-   stage('Preparation') {
-     checkout scm
-   }
    stage('test') {
      bat '''
      	cucumber -p secure_area -t @login BROWSER=chrome
