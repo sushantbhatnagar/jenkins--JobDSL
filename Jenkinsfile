@@ -1,7 +1,12 @@
 node {
+   def commit_id
+   stage('Preparation') {
+     checkout scm
+   }
    stage('test') {
      bat '''
-     	cucumber -p secure_area -t @login BROWSER=chrome
+     	cd secure_area
+     	cucumber -p secure_area features BROWSER=chrome
      '''
    }
    stage('docker build/push') {
