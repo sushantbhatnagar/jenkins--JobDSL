@@ -4,7 +4,9 @@ node {
      checkout scm
    }
    stage('test') {
-     bat 'cucumber features -p secure_area BROWSER=chrome'
+     bat '''
+     	cucumber -p secure_area features BROWSER=chrome
+     '''
    }
    stage('docker build/push') {
      docker.withRegistry('https://index.docker.io/v1/', 'docker-hub') {
