@@ -5,8 +5,7 @@ node {
    }
    stage('test') {
      bat '''
-     	cd secure_area
-     	cucumber -p secure_area features BROWSER=chrome
+     	cucumber -r features -p secure_area features BROWSER=chrome
      '''
    }
    stage('docker build/push') {
