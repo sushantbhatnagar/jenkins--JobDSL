@@ -17,6 +17,7 @@ job('Build jenkinsDockerChromeXvfB Image') {
             forceTag(false)
             createFingerprints(false)
             skipDecorate()
+	    skipTagAsLatest(true)	
         }
     }
 }
